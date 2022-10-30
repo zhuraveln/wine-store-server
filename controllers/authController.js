@@ -11,9 +11,7 @@ export const signUp = async (req, res) => {
     const hash = await bcrypt.hash(password, salt)
 
     const doc = new User({
-      email: req.body.email,
       name: req.body.name,
-      avatarUrl: req.body.avatarUrl,
       passwordHash: hash
     })
 
@@ -40,7 +38,7 @@ export const signUp = async (req, res) => {
 
 export const signIn = async (req, res) => {
   try {
-    const user = await User.findOne({ email: req.body.email })
+    const user = await User.findOne({ name: req.body.name })
 
     if (!user) {
       return res.status(404).json({
