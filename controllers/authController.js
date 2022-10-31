@@ -2,7 +2,9 @@ import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 
 import User from '../models/user.js'
+import Cart from '../models/cart.js'
 
+// Sign Up
 export const signUp = async (req, res) => {
   try {
 
@@ -10,22 +12,27 @@ export const signUp = async (req, res) => {
     const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(password, salt)
 
-    const doc = new User({
-      name: req.body.name,
-      passwordHash: hash
-    })
+    const docCart = new Cart()
+    const newCart = await docCart.save()
 
-    const user = await doc.save()
+    const docUser = new User({
+      name: req.body.name,
+      passwordHash: hash,
+      cart: newCart._id
+    })
+    const user = await docUser.save()
 
     const token = jwt.sign({
-      _id: user._id,
+      id: user._id,
     }, 'secretkey', { expiresIn: '7d' })
 
-    const { passwordHash, ...userData } = user._doc
+    const { _id, name, cart } = user._doc
 
     res.json({
-      ...userData,
+      _id,
+      name,
       token,
+      cart
     })
 
   } catch (error) {
@@ -36,6 +43,7 @@ export const signUp = async (req, res) => {
   }
 }
 
+// Sign In
 export const signIn = async (req, res) => {
   try {
     const user = await User.findOne({ name: req.body.name })
@@ -55,14 +63,16 @@ export const signIn = async (req, res) => {
     }
 
     const token = jwt.sign({
-      _id: user._id,
+      id: user._id,
     }, 'secretkey', { expiresIn: '7d' })
 
-    const { passwordHash, ...userData } = user._doc
+    const { _id, name, cart } = user._doc
 
     res.json({
-      ...userData,
+      _id,
+      name,
       token,
+      cart
     })
 
   } catch (error) {
@@ -73,6 +83,7 @@ export const signIn = async (req, res) => {
   }
 }
 
+// Auth Me
 export const authMe = async (req, res) => {
   try {
     const user = await User.findById(req.userId)
@@ -83,9 +94,9 @@ export const authMe = async (req, res) => {
       })
     }
 
-    const { passwordHash, ...userData } = user._doc
+    const { _id, name, cart } = user._doc
 
-    res.status(200).json({ userData })
+    res.status(200).json({ _id, name, cart })
 
   } catch (error) {
     console.log(error)

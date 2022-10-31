@@ -5,6 +5,7 @@ import * as dotenv from 'dotenv'
 import cors from 'cors'
 
 import { AuthRouter } from './routes/auth-routes.js'
+import { CartRouter } from './routes/cart-routes.js'
 
 const app = express()
 dotenv.config()
@@ -26,6 +27,7 @@ app.use(cors())
 app.use(express.json())
 
 app.use(AuthRouter)
+app.use(CartRouter)
 
 app.use((req, res) => {
   res

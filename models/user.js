@@ -10,6 +10,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
+  cart: {
+    type: mongoose.Schema.Types.ObjectId,
+    require: true,
+  }
 }, { timestamps: true })
 
 export default mongoose.model('User', userSchema)
