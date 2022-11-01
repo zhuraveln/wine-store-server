@@ -3,11 +3,12 @@ import Cart from '../models/cart.js'
 // Get User Cart
 export const getCart = async (req, res) => {
   try {
-    const cart = await Cart.findOne({ _id: req.body.cart })
+    const cardId = req.body.cart
+    const cart = await Cart.findOne({ _id: cardId })
 
     const { items, totalPrice } = cart._doc
 
-    res.json({
+    res.status(200).json({
       items,
       totalPrice
     })
@@ -23,18 +24,19 @@ export const getCart = async (req, res) => {
 // Upload User Cart
 export const postCart = async (req, res) => {
   try {
-    const newItems = req.body.items
-    const newTotalPrice = req.body.totalPrice
+    const cartId = req.body.cart
+    const cartItems = req.body.items
+    const cartTotalPrice = req.body.totalPrice
 
-    const cart = await Cart.findOne({ _id: req.body.cart })
+    const newCart = await Cart.findOneAndUpdate(
+      { _id: cartId },
+      {
+        $set: { items: cartItems, totalPrice: cartTotalPrice }
+      },
+      { returnDocument: 'after' }
+    )
 
-    const { items, totalPrice } = cart._doc
-
-    const newCart = await Cart.findOneAndUpdate({ id: cart._id },
-      { items: [...items, ...newItems], totalPrice: totalPrice + newTotalPrice },
-      { returnDocument: 'after' })
-
-    res.json({
+    res.status(200).json({
       items: newCart._doc.items,
       totalPrice: newCart._doc.totalPrice
     })
@@ -43,6 +45,32 @@ export const postCart = async (req, res) => {
     console.log(error)
     res.status(500).json({
       message: 'Failed to Upload Cart'
+    })
+  }
+}
+
+// Upload User Cart item
+export const postCartItem = async (req, res) => {
+  try {
+    const cartId = req.body.cart
+    const newItem = req.body.item
+
+    await Cart.findOneAndUpdate(
+      { _id: cartId },
+      {
+        $push: { items: newItem },
+        $inc: { totalPrice: newItem.price }
+      }
+    )
+
+    res.status(200).json({
+      item: newItem,
+    })
+
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({
+      message: 'Failed to Upload Cart Item'
     })
   }
 }
