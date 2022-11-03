@@ -1,6 +1,6 @@
 # ⚙️ Server for Online shop "Wine Store"
 
-powered by 💚 \***\*Node.JS\*\***
+powered by 💚 ****Node.JS****
 
 ## 🛠 Tech Stack
 
@@ -15,7 +15,7 @@ powered by 💚 \***\*Node.JS\*\***
 - Sign In/Up by JWT and password hash
 - Get / Upload user's shopping cart
 
-## 🎺 Demo
+## 👀 Demo
 
 - **[wine-store-server](https://wine-store-client.vercel.app/)** (heroku)
 
@@ -23,7 +23,7 @@ powered by 💚 \***\*Node.JS\*\***
 
 ### Sign Up
 
-```http
+```bash
   POST /auth/sign-up
 ```
 
@@ -33,7 +33,7 @@ powered by 💚 \***\*Node.JS\*\***
 
 ### Sign In
 
-```http
+```bash
   POST /auth/sign-in
 ```
 
@@ -43,7 +43,7 @@ powered by 💚 \***\*Node.JS\*\***
 
 ### Auth me
 
-```http
+```bash
   GET /auth/me
 ```
 
@@ -53,7 +53,7 @@ powered by 💚 \***\*Node.JS\*\***
 
 ### Get user's cart
 
-```http
+```bash
   GET /cart/get
 ```
 
@@ -63,7 +63,7 @@ powered by 💚 \***\*Node.JS\*\***
 
 ### Upload user's cart
 
-```http
+```bash
   POST /cart/upload
 ```
 
