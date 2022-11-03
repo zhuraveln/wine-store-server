@@ -4,6 +4,18 @@ import bcrypt from 'bcrypt'
 import User from '../models/user.js'
 import Cart from '../models/cart.js'
 
+// Info
+export const info = async (req, res) => {
+  try {
+    res.send('<h1>All documentation you can find on <a href="https://github.com/zhuraveln/wine-store-server">github project page</a></h1>')
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({
+      message: 'Failed to get info'
+    })
+  }
+}
+
 // Sign Up
 export const signUp = async (req, res) => {
   try {
