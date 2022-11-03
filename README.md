@@ -1,6 +1,6 @@
 # ⚙️ Server for Online shop "Wine Store"
 
-powered by 💚 \***\*Node.JS\*\***
+powered by 💚 **Node.JS**
 
 ## 🛠 Tech Stack
 
