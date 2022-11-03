@@ -1,6 +1,6 @@
 # ⚙️ Server for Online shop "Wine Store"
 
-powered by 💚 ****Node.JS****
+powered by 💚 \***\*Node.JS\*\***
 
 ## 🛠 Tech Stack
 
@@ -17,7 +17,7 @@ powered by 💚 ****Node.JS****
 
 ## 👀 Demo
 
-- **[wine-store-server](https://wine-store-client.vercel.app/)** (heroku)
+- **[wine-store-server](https://wine-store-server.herokuapp.com/)** (heroku)
 
 ## 🏗 API Reference
 
