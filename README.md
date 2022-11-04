@@ -2,6 +2,8 @@
 
 powered by 💚 **Node.JS**
 
+**[wine-store](https://github.com/zhuraveln/wine-store-client)** (github)
+
 ## 🛠 Tech Stack
 
 - Node.js
@@ -27,9 +29,9 @@ powered by 💚 **Node.JS**
   POST /auth/sign-up
 ```
 
-| Body                                | Type   |
-| :---------------------------------- | :----- |
-| { "name": " _ ","password": " _ " } | `JSON` |
+| Body                            | Type   |
+| :------------------------------ | :----- |
+| `{ "name": "","password": "" }` | `JSON` |
 
 ### Sign In
 
@@ -37,9 +39,9 @@ powered by 💚 **Node.JS**
   POST /auth/sign-in
 ```
 
-| Body                                | Type   |
-| :---------------------------------- | :----- |
-| { "name": " _ ","password": " _ " } | `JSON` |
+| Body                            | Type   |
+| :------------------------------ | :----- |
+| `{ "name": "","password": "" }` | `JSON` |
 
 ### Auth me
 
@@ -49,7 +51,7 @@ powered by 💚 **Node.JS**
 
 | Authorization | Type           |
 | :------------ | :------------- |
-| JWT           | `Bearer Token` |
+| `JWT`         | `Bearer Token` |
 
 ### Get user's cart
 
@@ -57,9 +59,9 @@ powered by 💚 **Node.JS**
   GET /cart/get
 ```
 
-| Body                 | Type   |
-| :------------------- | :----- |
-| { "cart": "cartId" } | `JSON` |
+| Body                   | Type   |
+| :--------------------- | :----- |
+| `{ "cart": "cartId" }` | `JSON` |
 
 ### Upload user's cart
 
@@ -67,9 +69,9 @@ powered by 💚 **Node.JS**
   POST /cart/upload
 ```
 
-| Body                                  | Type   |
-| :------------------------------------ | :----- |
-| { "cart": "cartId","items": "Array" } | `JSON` |
+| Body                                    | Type   |
+| :-------------------------------------- | :----- |
+| `{ "cart": "cartId","items": "Array" }` | `JSON` |
 
 ## 🚚 Run Locally
 

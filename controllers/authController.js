@@ -7,7 +7,7 @@ import Cart from '../models/cart.js'
 // Info
 export const info = async (req, res) => {
   try {
-    res.send('<h1>All documentation you can find on <a href="https://github.com/zhuraveln/wine-store-server">github project page</a></h1>')
+    res.send('<h1>All API documentation you can find on <a href="https://github.com/zhuraveln/wine-store-server">github project page</a> (API Reference section)</h1>')
   } catch (error) {
     console.log(error)
     res.status(500).json({
@@ -19,7 +19,6 @@ export const info = async (req, res) => {
 // Sign Up
 export const signUp = async (req, res) => {
   try {
-
     const password = req.body.password
     const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(password, salt)
@@ -58,6 +57,8 @@ export const signUp = async (req, res) => {
 // Sign In
 export const signIn = async (req, res) => {
   try {
+    console.log(req.body);
+
     const user = await User.findOne({ name: req.body.name })
 
     if (!user) {
