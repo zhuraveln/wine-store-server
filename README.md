@@ -1,8 +1,6 @@
-# ⚙️ Server for Online shop "Wine Store"
+# ⚙️ Server for "[Wine store](https://github.com/zhuraveln/wine-store-client)"
 
-powered by 💚 **Node.JS**
-
-**[wine-store](https://github.com/zhuraveln/wine-store-client)** (github)
+by 💚 **Node.JS**
 
 ## 🛠 Tech Stack
 
@@ -16,10 +14,6 @@ powered by 💚 **Node.JS**
 
 - Sign In/Up by JWT and password hash
 - Get / Upload user's shopping cart
-
-## 👀 Demo
-
-- **[wine-store-server](https://wine-store-server.herokuapp.com/)** (heroku)
 
 ## 🏗 API Reference
 
