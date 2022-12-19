@@ -20,8 +20,6 @@ app.listen(process.env.PORT, (error) => {
 
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'))
 
-app.use(express.static('public'))
-
 app.use(express.urlencoded(({ express: false })))
 
 app.use(cors())
@@ -36,5 +34,3 @@ app.use((req, res) => {
     .status(404)
 })
 
-// Export the Express API
-module.exports = app;
