@@ -35,3 +35,6 @@ app.use((req, res) => {
   res
     .status(404)
 })
+
+// Export the Express API
+module.exports = app;
